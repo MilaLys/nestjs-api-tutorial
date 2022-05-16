@@ -17,9 +17,7 @@ $ npm install
 
 ```bash
 # development
-$ npm run start
-
-# watch mode
+$ npm run db:dev:restart
 $ npm run start:dev
 
 # production mode
@@ -30,6 +28,15 @@ $ npm run db:dev:restart
 $ npm run prisma:dev:deploy
 ```
 
+
+## Running prisma
+```bash
+# dev mode
+$ prisma studio
+
+# test mode
+$ dotenv -e .env.test -- prisma studio
+```
 ## Tests
 
 ```bash

@@ -1,4 +1,4 @@
-import { ForbiddenException, Injectable } from '@nestjs/common';
+import { ForbiddenException, Injectable, Logger } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { JwtService } from '@nestjs/jwt';
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime';
@@ -9,6 +9,8 @@ import { AuthDto } from './dto';
 
 @Injectable()
 export class AuthService {
+  private logger = new Logger('AuthService');
+
   constructor(private prisma: PrismaService, private jwt: JwtService, private config: ConfigService) {}
 
   async signup(dto: AuthDto) {
@@ -32,7 +34,7 @@ export class AuthService {
     }
   }
 
-  async signin(dto: AuthDto) {
+  async signIn(dto: AuthDto) {
     const user = await this.prisma.user.findUnique({
       where: {
         email: dto.email
@@ -44,6 +46,8 @@ export class AuthService {
     const pswMatch = await argon.verify(user.hash, dto.password);
 
     if (!pswMatch) throw new ForbiddenException('Password incorrect!');
+
+    this.logger.debug(`The user ${user.firstName} signed in.`);
 
     return this.signToken(user.id, user.email);
   }
