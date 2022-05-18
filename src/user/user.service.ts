@@ -1,4 +1,6 @@
 import { Injectable } from '@nestjs/common';
+import { User } from '@prisma/client';
+
 import { PrismaService } from '../prisma/prisma.service';
 import { UserEditDto } from './dto';
 
@@ -6,7 +8,7 @@ import { UserEditDto } from './dto';
 export class UserService {
   constructor(private prisma: PrismaService) {}
 
-  getUser(user) {
+  getUser(user: User) {
     return this.prisma.user.findUnique({
       where: {
         id: user.id
