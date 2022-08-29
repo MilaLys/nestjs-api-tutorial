@@ -2,7 +2,7 @@ import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import React, { useState } from 'react';
 import Typography from '@mui/material/Typography';
-import { Button, Grid, Stack, TextField, Tooltip } from '@mui/material';
+import { Button, Grid, Stack, TextField } from '@mui/material';
 import Words from 'src/components/Words';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -17,19 +17,11 @@ function App() {
     words: [cardData],
     uid: uuidv4()
   };
-  const [word, setWord] = useState({});
   const [words, setWords] = useState([]);
   const [list, setList] = useState(listData);
 
   function addEmptyCard() {
-    setWords(prevCards => [...prevCards, cardData]);
-  }
-
-  function handleCardChange(event) {
-    setWord(prevState => ({
-      ...prevState,
-      [event.target.name]: event.target.value
-    }));
+    setWords(prevCards => [...prevCards, { ...cardData, count: words.length + 1 }]);
   }
 
   function handleListChange(event) {
@@ -81,33 +73,7 @@ function App() {
                   </Grid>
 
                   <Grid item xs={12} sx={{ position: 'relative' }}>
-                    <Words
-                      words={words}
-                      setWords={setWords}
-                      handleOnSubmit={saveList}
-                      onCardChange={handleCardChange}
-                    />
-
-                    <Tooltip title="Add a New Word">
-                      <Button
-                        onClick={addEmptyCard}
-                        variant="outlined"
-                        sx={{
-                          background: 'white',
-                          position: 'absolute',
-                          bottom: '-5px',
-                          height: '40px',
-                          width: '40px',
-                          left: '50%',
-                          transform: 'translateX(-50%)',
-                          padding: 0,
-                          ':hover': { bgcolor: 'white' }
-                        }}>
-                        <Typography variant="h4" color="primary.light">
-                          +
-                        </Typography>
-                      </Button>
-                    </Tooltip>
+                    <Words words={words} setWords={setWords} handleOnSubmit={saveList} addEmptyCard={addEmptyCard} />
                   </Grid>
                 </Grid>
 

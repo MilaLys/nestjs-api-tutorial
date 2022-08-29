@@ -1,20 +1,19 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo_text.svg" width="320" alt="Nest Logo" /></a>
-</p>
-
-# nest-js-api-tutorial
+# Vocabulary Trainer
 ## Description
-
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+Application for studying language vocabulary.
 
 ## Installation
-
 ```bash
 $ npm install
 ```
 
-## Running the app
+## Running the app client
+```bash
+# development
+$ npm run start:client
+```
 
+## Running the app server
 ```bash
 # development
 $ npm run db:dev:restart
@@ -37,8 +36,8 @@ $ prisma studio
 # test mode
 $ dotenv -e .env.test -- prisma studio
 ```
-## Tests
 
+## Tests
 ```bash
 # e2e tests
 # restart test DB

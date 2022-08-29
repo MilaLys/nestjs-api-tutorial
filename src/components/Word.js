@@ -8,9 +8,7 @@ import IconButton from '@mui/material/IconButton';
 import { Grid, Paper, Typography, TextField, Tooltip } from '@mui/material';
 
 export default function Word(props) {
-  const handleCardChange = event => {
-    props.onCardChange(event);
-  };
+  const { count, term, definition, uid } = props;
 
   return (
     <Box sx={{ width: '100%', marginBottom: '15px' }}>
@@ -29,16 +27,12 @@ export default function Word(props) {
             }}>
             <Box component="div">
               <Typography variant="button" color="warning.light">
-                {props.count}
+                {count}
               </Typography>
             </Box>
 
             <Tooltip title="Delete the Word">
-              <IconButton
-                onClick={() => props.handleRemoveWord(props.uid)}
-                edge="end"
-                aria-label="delete"
-                color="warning">
+              <IconButton onClick={() => props.handleRemoveWord(uid)} edge="end" aria-label="delete" color="warning">
                 <DeleteIcon />
               </IconButton>
             </Tooltip>
@@ -57,8 +51,8 @@ export default function Word(props) {
                   label="Enter term"
                   name="term"
                   variant="standard"
-                  value={props.term}
-                  onChange={handleCardChange}
+                  value={term}
+                  onChange={() => props.handleInputChange(event, uid)}
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -70,8 +64,8 @@ export default function Word(props) {
                   label="Enter definition"
                   name="definition"
                   variant="standard"
-                  value={props.definition}
-                  onChange={handleCardChange}
+                  value={definition}
+                  onChange={() => props.handleInputChange(event, uid)}
                 />
               </Grid>
 
