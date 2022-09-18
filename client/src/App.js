@@ -3,20 +3,16 @@ import Container from '@mui/material/Container';
 import React, { useState } from 'react';
 import Typography from '@mui/material/Typography';
 import { Button, Grid, Stack, TextField } from '@mui/material';
-import Words from 'src/components/Words';
 import { v4 as uuidv4 } from 'uuid';
 
 import './App.css';
 import Footer from 'src/components/Footer';
+import Words from 'src/components/Words';
 
 function App() {
-  let cardData = { count: 1, definition: '', image: '', term: '', uid: uuidv4() };
-  const listData = {
-    title: '',
-    description: '',
-    words: [cardData],
-    uid: uuidv4()
-  };
+  const cardData = { count: 1, definition: '', image: '', term: '', uid: uuidv4() };
+  const listData = { title: '', description: '', uid: uuidv4() };
+
   const [words, setWords] = useState([]);
   const [list, setList] = useState(listData);
 
@@ -32,8 +28,9 @@ function App() {
   }
 
   function saveList() {
-    console.log('saveList', words);
     event.preventDefault();
+    const data = { ...list, words };
+    console.log(data);
   }
 
   return (

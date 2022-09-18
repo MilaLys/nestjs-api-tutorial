@@ -1,8 +1,8 @@
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Link from '@mui/material/Link';
-import React from 'react';
 import Typography from '@mui/material/Typography';
+import React from 'react';
 
 function Copyright() {
   return (
@@ -17,19 +17,21 @@ function Copyright() {
   );
 }
 
-export default function Footer() {
-  return (
-    <Box
-      component="footer"
-      sx={{
-        py: 3,
-        px: 2,
-        mt: 'auto',
-        backgroundColor: '#2e1a45'
-      }}>
-      <Container maxWidth="xl">
-        <Copyright />
-      </Container>
-    </Box>
-  );
+export default class Footer extends React.Component {
+  render() {
+    return (
+      <Box
+        component="footer"
+        sx={{
+          py: 3,
+          px: 2,
+          mt: 'auto',
+          backgroundColor: '#2e1a45'
+        }}>
+        <Container maxWidth="xl">
+          <Copyright />
+        </Container>
+      </Box>
+    );
+  }
 }

@@ -1,8 +1,9 @@
 {
   "arrowParens": "avoid",
   "bracketSameLine": true,
-  "bracketSpacing": true,
+  "bracketSpacing": false,
   "printWidth": 120,
+  "requirePragma": true,
   "semi": true,
   "singleQuote": true,
   "tabWidth": 2,
