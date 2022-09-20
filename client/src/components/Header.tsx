@@ -24,11 +24,11 @@ export default function Header() {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
 
-  const handleOpenNavMenu = event => {
+  const handleOpenNavMenu = (event: { currentTarget: any }) => {
     setAnchorElNav(event.currentTarget);
   };
 
-  const handleOpenUserMenu = event => {
+  const handleOpenUserMenu = (event: { currentTarget: any }) => {
     setAnchorElUser(event.currentTarget);
   };
 

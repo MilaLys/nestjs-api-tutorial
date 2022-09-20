@@ -6,8 +6,8 @@ import { Button, Grid, Stack, TextField } from '@mui/material';
 import { v4 as uuidv4 } from 'uuid';
 
 import './App.css';
-import Footer from 'src/components/Footer';
-import Words from 'src/components/Words';
+import Footer from './components/Footer';
+import Words from './components/Words';
 
 function App() {
   const cardData = { count: 1, definition: '', image: '', term: '', uid: uuidv4() };
@@ -20,7 +20,7 @@ function App() {
     setWords(prevCards => [...prevCards, { ...cardData, count: words.length + 1 }]);
   }
 
-  function handleListChange(event) {
+  function handleListChange(event: { target: { name: any; value: any } }) {
     setList(prevList => ({
       ...prevList,
       [event.target.name]: event.target.value

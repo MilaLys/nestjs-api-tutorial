@@ -1,17 +1,19 @@
-import { Button, Tooltip } from '@mui/material';
-import Typography from '@mui/material/Typography';
 import React, { Fragment } from 'react';
+import Typography from '@mui/material/Typography';
+import { Button, Tooltip } from '@mui/material';
 import _ from 'lodash';
 
-import Word from 'src/components/Word';
+import Word from './Word';
 
-export default function Words({ words, setWords, addEmptyCard }) {
-  const handleRemoveWord = uid => {
-    setWords(words.filter(word => word.uid !== uid));
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+export default function Words({ words, setWords, addEmptyCard, handleOnSubmit }) {
+  const handleRemoveWord = (uid: string) => {
+    setWords(words.filter((word: { uid: string }) => word.uid !== uid));
   };
 
-  const handleInputChange = (event, uid) => {
-    setWords(current =>
+  const handleInputChange = (event: { target: { name: any; value: any } }, uid: any) => {
+    setWords((current: any[]) =>
       current.map(obj => {
         if (obj.uid === uid) {
           return { ...obj, [event.target.name]: event.target.value };
@@ -26,7 +28,7 @@ export default function Words({ words, setWords, addEmptyCard }) {
     <Fragment>
       <div>
         {!_.isEmpty(words) ? (
-          words.map(word => (
+          words.map((word: any) => (
             <Word key={word.uid} {...word} handleRemoveWord={handleRemoveWord} handleInputChange={handleInputChange} />
           ))
         ) : (
