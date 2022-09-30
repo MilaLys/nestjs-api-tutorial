@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { createRoot } from 'react-dom/client';
 import CssBaseline from '@mui/material/CssBaseline';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { ThemeProvider } from '@mui/material/styles';
+import { createRoot } from 'react-dom/client';
 
 import App from './App';
 import Header from './components/Header';

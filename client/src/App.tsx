@@ -1,15 +1,12 @@
-import Box from '@mui/material/Box';
-import Container from '@mui/material/Container';
 import React, { useState } from 'react';
-import Typography from '@mui/material/Typography';
-import { Button, Grid, Stack, TextField } from '@mui/material';
+import { Box, Button, Container, Grid, Stack, TextField, Typography } from '@mui/material';
 import { v4 as uuidv4 } from 'uuid';
 
 import './App.css';
 import Footer from './components/Footer';
 import Words from './components/Words';
 
-function App() {
+export default function App() {
   const cardData = { count: 1, definition: '', image: '', term: '', uid: uuidv4() };
   const listData = { title: '', description: '', uid: uuidv4() };
 
@@ -28,7 +25,6 @@ function App() {
   }
 
   function saveList() {
-    event.preventDefault();
     const data = { ...list, words };
     console.log(data);
   }
@@ -94,5 +90,3 @@ function App() {
     </Box>
   );
 }
-
-export default App;
