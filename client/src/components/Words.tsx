@@ -35,7 +35,7 @@ export default function Words({ words, setWords, addEmptyCard, handleOnSubmit })
             <Word key={word.uid} {...word} handleRemoveWord={handleRemoveWord} handleInputChange={handleInputChange} />
           ))
         }
-        {!hasWords && <p style={{ marginBottom: '75px' }}>No words available. Please add some words.</p>}
+        {!hasWords && <p>No words available. Please add some words.</p>}
 
         <Tooltip title="Add a New Word">
           <IconButton onClick={addEmptyCard} aria-label="add" color="primary" size="large">

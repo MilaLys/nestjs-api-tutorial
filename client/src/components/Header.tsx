@@ -1,15 +1,10 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { v4 as uuidv4 } from 'uuid';
 import AdbIcon from '@mui/icons-material/Adb';
 import MenuIcon from '@mui/icons-material/Menu';
 import { AppBar, Avatar, Box, Container, IconButton, Menu, MenuItem, Toolbar, Tooltip, Typography } from '@mui/material';
+import { PAGES, USER_SETTINGS } from '../constants';
 
-const pages = [
-  { link: 'Your lists', path: '/words', uid: uuidv4() },
-  { link: 'Create list', path: '/', uid: uuidv4() }
-];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 export default function Header() {
   const [anchorElNav, setAnchorElNav] = useState(null);
@@ -73,7 +68,7 @@ export default function Header() {
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
               sx={{ display: { xs: 'block', md: 'none' } }}>
-              {pages.map(page => (
+              {PAGES.map(page => (
                 <MenuItem component="a" href={page.path} key={page.uid} onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">{page.link}</Typography>
                 </MenuItem>
@@ -99,7 +94,7 @@ export default function Header() {
             LOGO
           </Typography>
           <Box sx={{ mt: '3px', flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map(page => (
+            {PAGES.map(page => (
               <Link
                 key={page.uid}
                 to={page.path}
@@ -124,7 +119,7 @@ export default function Header() {
               transformOrigin={{ vertical: 'top', horizontal: 'right' }}
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}>
-              {settings.map(setting => (
+              {Object.keys(USER_SETTINGS).map(setting => (
                 <MenuItem key={setting} onClick={handleCloseUserMenu}>
                   <Typography textAlign="center">{setting}</Typography>
                 </MenuItem>
