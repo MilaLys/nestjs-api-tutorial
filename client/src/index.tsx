@@ -1,14 +1,14 @@
 import * as React from 'react';
-import CssBaseline from '@mui/material/CssBaseline';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { ThemeProvider } from '@mui/material/styles';
 import { createRoot } from 'react-dom/client';
+import { CssBaseline, ThemeProvider } from '@mui/material';
 
 import App from './App';
 import Header from './components/Header';
-import Words from './components/Words';
+import WordList from './components/WordList';
 import reportWebVitals from './reportWebVitals';
 import theme from './theme';
+
 
 const rootElement = document.getElementById('root');
 const root = createRoot(rootElement);
@@ -21,9 +21,10 @@ root.render(
 
       <Routes>
         <Route path="/" element={<App />} />
+        {/*TODO: remove element with props*/}
         <Route
           path="/words"
-          element={<Words words={undefined} setWords={undefined} addEmptyCard={undefined} handleOnSubmit={undefined} />}
+          element={<WordList words={undefined} setWords={undefined} addEmptyCard={undefined} handleOnSubmit={undefined} />}
         />
       </Routes>
     </Router>

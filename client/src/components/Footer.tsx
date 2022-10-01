@@ -1,5 +1,9 @@
 import React from 'react';
-import { Box, Container, Link, Typography } from '@mui/material';
+import Box from '@mui/material/Box';
+import Container from '@mui/material/Container';
+import Link from '@mui/material/Link';
+import Typography from '@mui/material/Typography';
+
 
 function Copyright() {
   return (

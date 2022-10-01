@@ -1,10 +1,16 @@
 import React, { useState } from 'react';
-import { Box, Button, Container, Grid, Stack, TextField, Typography } from '@mui/material';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Container from '@mui/material/Container';
+import Grid from '@mui/material/Grid';
+import Stack from '@mui/material/Stack';
+import Typography from '@mui/material/Typography';
+import TextField from '@mui/material/TextField';
 import { v4 as uuidv4 } from 'uuid';
 
 import './App.css';
 import Footer from './components/Footer';
-import Words from './components/Words';
+import WordList from './components/WordList';
 
 export default function App() {
   const cardData = { count: 1, definition: '', image: '', term: '', uid: uuidv4() };
@@ -66,7 +72,7 @@ export default function App() {
                   </Grid>
 
                   <Grid item xs={12} sx={{ position: 'relative' }}>
-                    <Words words={words} setWords={setWords} handleOnSubmit={saveList} addEmptyCard={addEmptyCard} />
+                    <WordList words={words} setWords={setWords} handleOnSubmit={saveList} addEmptyCard={addEmptyCard} />
                   </Grid>
                 </Grid>
 

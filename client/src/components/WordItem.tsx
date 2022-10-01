@@ -1,17 +1,22 @@
 import React from 'react';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { Box, Button, Card, CardContent, Grid, IconButton, Paper, Typography, TextField, Tooltip } from '@mui/material';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import Grid from '@mui/material/Grid';
+import IconButton from '@mui/material/IconButton';
+import Paper from '@mui/material/Paper';
+import Typography from '@mui/material/Typography';
+import TextField from '@mui/material/TextField';
+import Tooltip from '@mui/material/Tooltip';
 
-interface Props {
-  count: number;
-  definition: string;
-  term: string;
-  uid: string;
-  handleInputChange: (e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>, uid: string) => void;
-  handleRemoveWord: (uid: string) => void;
-}
+import classes from './ImagePlaceholder.module.css';
 
-export default function Word(props: Props) {
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars,@typescript-eslint/ban-ts-comment
+// @ts-ignore
+export default function WordItem({ word, ...props }) {
   return (
     <Box sx={{ width: '100%', marginBottom: '15px' }}>
       <Paper>
@@ -29,13 +34,13 @@ export default function Word(props: Props) {
             }}>
             <Box component="div">
               <Typography variant="button" color="warning.light">
-                {props.count}
+                {word.count}
               </Typography>
             </Box>
 
             <Tooltip title="Delete the Word">
               <IconButton
-                onClick={() => props.handleRemoveWord(props.uid)}
+                onClick={() => props.handleRemoveWord(word.uid)}
                 edge="end"
                 aria-label="delete"
                 color="warning">
@@ -58,7 +63,7 @@ export default function Word(props: Props) {
                   name="term"
                   variant="standard"
                   value={props.term}
-                  onChange={(e) => props.handleInputChange(e, props.uid)}
+                  onChange={(e) => props.handleInputChange(e, word.uid)}
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -71,7 +76,7 @@ export default function Word(props: Props) {
                   name="definition"
                   variant="standard"
                   value={props.definition}
-                  onChange={(e) => props.handleInputChange(e, props.uid)}
+                  onChange={(e) => props.handleInputChange(e, word.uid)}
                 />
               </Grid>
 
@@ -79,15 +84,7 @@ export default function Word(props: Props) {
                 <Tooltip title="Add an Image">
                   <Box
                     component="span"
-                    sx={{
-                      cursor: 'pointer',
-                      display: 'flex',
-                      justifyContent: 'center',
-                      width: '100%',
-                      height: '50px',
-                      border: '1px dashed #4a3365',
-                      overflow: 'hidden'
-                    }}>
+                    className={classes.photo}>
                     <Button sx={{ textTransform: 'uppercase', fontSize: '10px' }}>image</Button>
                   </Box>
                 </Tooltip>
