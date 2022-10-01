@@ -76,16 +76,20 @@ export default function App() {
                   </Grid>
                 </Grid>
 
-                <Stack
-                  spacing={2}
-                  direction="row"
-                  justifyContent="flex-end"
-                  alignItems="center"
-                  sx={{ marginBottom: '64px' }}>
-                  <Button onClick={saveList} variant="contained">
-                    Save List
-                  </Button>
-                </Stack>
+                {
+                  words.length > 0
+                  &&
+                  <Stack
+                    spacing={2}
+                    direction="row"
+                    justifyContent="flex-end"
+                    alignItems="center"
+                    sx={{ marginBottom: '64px' }}>
+                    <Button onClick={saveList} variant="contained">
+                      Save List
+                    </Button>
+                  </Stack>
+                }
               </div>
             </Box>
           </Container>

@@ -39,8 +39,6 @@ export default function Header() {
     <AppBar position="fixed">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
-
           <Typography
             variant="h6"
             noWrap
@@ -50,12 +48,12 @@ export default function Header() {
               mr: 2,
               display: { xs: 'none', md: 'flex' },
               fontFamily: 'monospace',
-              fontWeight: 700,
+              fontWeight: 900,
               letterSpacing: '.3rem',
               color: 'inherit',
               textDecoration: 'none'
             }}>
-            LOGO
+            MEMO
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>

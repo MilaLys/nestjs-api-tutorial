@@ -47,7 +47,7 @@ export default function WordList({ words, setWords, addEmptyCard, handleOnSubmit
     <Fragment>
       {sortedAndSearchedWords && <WordFilters filter={filter} setFilter={setFilter} />}
 
-      <div>
+      <div style={{textAlign: 'center'}}>
         {
           hasWords && sortedAndSearchedWords.map((word: any) => (
             <WordItem
