@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import DeleteIcon from '@mui/icons-material/Delete';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
@@ -10,6 +10,7 @@ import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import Tooltip from '@mui/material/Tooltip';
+import DialogConfirmation from './DialogConfirmation';
 
 import classes from './ImagePlaceholder.module.css';
 
@@ -17,8 +18,18 @@ import classes from './ImagePlaceholder.module.css';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars,@typescript-eslint/ban-ts-comment
 // @ts-ignore
 export default function WordItem({ word, ...props }) {
+  const [modal, setModal] = useState(false);
+
+  const handleDelete = () => {
+    props.handleRemoveWord(word.uid);
+  };
+
   return (
     <Box sx={{ width: '100%', marginBottom: '15px' }}>
+      <DialogConfirmation visible={modal} setVisible={setModal} onConfirm={handleDelete}>
+        Are you sure you want to delete this word?
+      </DialogConfirmation>
+
       <Paper>
         <Grid container>
           <Grid
@@ -40,7 +51,7 @@ export default function WordItem({ word, ...props }) {
 
             <Tooltip title="Delete the Word">
               <IconButton
-                onClick={() => props.handleRemoveWord(word.uid)}
+                onClick={() => setModal(true)}
                 edge="end"
                 aria-label="delete"
                 color="warning">

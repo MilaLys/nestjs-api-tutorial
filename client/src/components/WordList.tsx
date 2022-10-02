@@ -3,6 +3,7 @@ import isEmpty from 'lodash.isempty';
 import AddIcon from '@mui/icons-material/Add';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
+import DialogConfirmation from './DialogConfirmation';
 
 import WordItem from './WordItem';
 import WordFilters from './WordFilters';
@@ -45,6 +46,7 @@ export default function WordList({ words, setWords, addEmptyCard, handleOnSubmit
 
   return (
     <Fragment>
+
       {sortedAndSearchedWords && <WordFilters filter={filter} setFilter={setFilter} />}
 
       <div style={{textAlign: 'center'}}>
