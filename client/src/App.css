@@ -1,1 +1,14 @@
-
+.word-enter {
+    opacity: 0;
+}
+.word-enter-active {
+    opacity: 1;
+    transition: opacity 200ms;
+}
+.word-exit {
+    opacity: 1;
+}
+.word-exit-active {
+    opacity: 0;
+    transition: opacity 200ms;
+}
