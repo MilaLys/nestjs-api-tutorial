@@ -1,18 +1,21 @@
-import React, { Fragment, useMemo, useState } from 'react';
+import React, { Fragment, useState } from 'react';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import isEmpty from 'lodash.isempty';
 import AddIcon from '@mui/icons-material/Add';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 
-import WordItem from './WordItem';
 import WordFilters from './WordFilters';
+import WordItem from './WordItem';
+import { useWords } from '../hooks/useWords';
 
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 export default function WordList({ words, setWords, addEmptyCard, handleOnSubmit }) {
   const hasWords = !isEmpty(words);
+  const [filter, setFilter] = useState({ sort: '', query: '' });
+  const sortedAndSearchedWords = useWords(words, filter.sort, filter.query);
 
   const handleRemoveWord = (uid: string) => {
     setWords(words.filter((word: { uid: string }) => word.uid !== uid));
@@ -29,25 +32,11 @@ export default function WordList({ words, setWords, addEmptyCard, handleOnSubmit
       })
     );
   };
-
-  const [filter, setFilter] = useState({ sort: '', query: '' });
-
-  const sortedWords = useMemo(() => {
-    if (filter.sort) {
-      return [...words].sort((a, b) => a[filter.sort].localeCompare(b[filter.sort]));
-    }
-
-    return words;
-  }, [filter.sort, words]);
-
-  const sortedAndSearchedWords = useMemo(() => {
-    return sortedWords.filter((word: any) => word.term.toLowerCase().includes(filter.query));
-  }, [filter.query, sortedWords]);
-
+  
   return (
     <Fragment>
 
-      {sortedAndSearchedWords && <WordFilters filter={filter} setFilter={setFilter} />}
+      {hasWords && <WordFilters filter={filter} setFilter={setFilter} />}
 
       <div style={{ textAlign: 'center' }}>
         <TransitionGroup>
