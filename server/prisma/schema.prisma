@@ -16,27 +16,41 @@ model User {
     updatedAt DateTime @updatedAt
 
     email String @unique
-    hash String @expose
+    hash String
 
     firstName String?
     lastName String?
 
-    bookmarks Bookmark[]
+    lists List[]
 
     @@map("users")
 }
 
-model Bookmark {
+model List {
     id Int @id @default(autoincrement())
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
 
     title String
     description String?
-    link String
+
+    words Word[]
 
     userId Int
     user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-    @@map("bookmarks")
+    @@map("lists")
+}
+
+model Word {
+    id Int @id @default(autoincrement())
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    term String
+    definition String
+    image String?
+
+    listId Int
+    list List @relation(fields: [listId], references: [id])
 }

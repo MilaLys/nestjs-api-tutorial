@@ -1,7 +1,7 @@
 import { v4 as uuidv4 } from 'uuid';
 
 export const PAGES = [
-  { link: 'Your lists', path: '/words', uid: uuidv4() },
+  { link: 'Your lists', path: '/lists', uid: uuidv4() },
   { link: 'Create list', path: '/', uid: uuidv4() }
 ];
 

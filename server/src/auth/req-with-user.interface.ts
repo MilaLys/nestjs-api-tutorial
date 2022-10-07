@@ -1,3 +1,4 @@
+// @ts-ignore
 import { User } from '@prisma/client';
 import { Request } from 'express';
 

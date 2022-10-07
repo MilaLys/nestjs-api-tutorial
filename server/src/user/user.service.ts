@@ -1,4 +1,5 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
+// @ts-ignore
 import { User } from '@prisma/client';
 
 import { PrismaService } from '../prisma/prisma.service';

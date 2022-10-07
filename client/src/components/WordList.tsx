@@ -32,7 +32,7 @@ export default function WordList({ words, setWords, addEmptyCard, handleOnSubmit
       })
     );
   };
-  
+
   return (
     <Fragment>
 

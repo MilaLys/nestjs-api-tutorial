@@ -5,7 +5,7 @@ import { CssBaseline, ThemeProvider } from '@mui/material';
 
 import App from './App';
 import Header from './components/Header';
-import WordList from './components/WordList';
+import Lists from './pages/Lists';
 import reportWebVitals from './reportWebVitals';
 import theme from './theme';
 
@@ -23,8 +23,8 @@ root.render(
         <Route path="/" element={<App />} />
         {/*TODO: remove element with props*/}
         <Route
-          path="/words"
-          element={<WordList words={undefined} setWords={undefined} addEmptyCard={undefined} handleOnSubmit={undefined} />}
+          path="/lists"
+          element={<Lists />}
         />
       </Routes>
     </Router>

@@ -1,18 +1,14 @@
-import { ApiProperty } from '@nestjs/swagger';
 import { IsNotEmpty, IsOptional, IsString } from 'class-validator';
 
-export class BookmarkCreationDto {
-  @ApiProperty()
+export class ListEditingDTO {
   @IsString()
   @IsNotEmpty()
   link: string;
 
-  @ApiProperty()
   @IsString()
   @IsNotEmpty()
   title: string;
 
-  @ApiProperty({ required: false })
   @IsString()
   @IsOptional()
   description?: string;

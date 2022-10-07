@@ -1,5 +1,6 @@
 import { ApiCreatedResponse, ApiTags } from '@nestjs/swagger';
 import { Body, Controller, Get, Patch, Post, UseGuards } from '@nestjs/common';
+// @ts-ignore
 import { User } from '@prisma/client';
 
 import { GetUser } from '../auth/decorator';
